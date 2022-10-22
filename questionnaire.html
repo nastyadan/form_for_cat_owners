@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ra">
+
+<head>
+    <title>Опросник для владельцев котиков</title>
+    <link rel="icon" href="cat.png" type="image/png" />
+    <style>
+        .red {
+            color: darkred;
+        }
+
+        input:required:valid {
+            border: 2.5px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="catname">Как зовут вашего питомца? <span class="red">*</span></label> <br />
+            <input type="text" id="catname" required />
+        </div><br />
+        <div>
+            <fieldset>
+                <legend>Ваши данные</legend>
+                <div><label for="yourname">Ваше имя? <span class="red">*</span></label>
+                    <input type="text" id="yourname" required /></div>
+                <div>
+                    <label for="yourtelephon">Введите ваш номер телефона:<span class="red">*</span></label>
+                    <input type="tel" id="yourtelephon" required />
+                </div>
+                <div>
+                    <label for="youremail">Введите вашу почту:<span class="red">*</span></label>
+                    <input type="email" id="youremail" required />
+                </div>
+
+
+            </fieldset>
+        </div>
+        <div> Какая порода у вашего котика?<span class="red">*</span>
+            <select id="breed" required>
+                <option value="" selected>Выбрать</option>
+                <option value="Мейн-кун">Мейн-кун</option>
+                <option value="Манчкин">Манчкин</option>
+                <option value="Бурма">Бурма</option>
+            </select>
+        </div>
+        <div>
+            <label> Чем он питается? <span class="red">*</span>
+                <div>
+                    <p><input type="checkbox" name="food" value="1" /> Сухой корм</p>
+                    <p> <input type="checkbox" name="food" value="2" /> Влажный корм</p>
+                    <p> <input type="checkbox" name="food" value="3" /> Натуральный корм</p>
+                </div>
+            </label>
+        </div>
+        <div>
+            <label> Пол вашего питомца:
+                <div>
+                    <p><input type="radio" name="sex" value="f" required /> Девочка </p>
+                    <p><input type="radio" name="sex" value="m" /> Мальчик</p>
+                </div>
+
+
+            </label>
+        </div>
+
+        <div> Ваш комментарий:
+            <label for="comment"></label>
+            <p><textarea cols="30" id="comment"></textarea></p>
+        </div>
+        <div> Поделитесь фотографией вашего котика <br />
+            <p> <input type="file" multiple /></p>
+        </div>
+
+
+        <button id="btn">Сохранить</button>
+    </form>
+    <script>
+        // function getInf() {
+        //   class Cat {
+        //     constructor() {
+        //       this.catName = document.getElementById('catname').value;
+        //     this.ownerName = document.getElementById('yourname');
+        //   this.telephon = document.getElementById('yourtelephon');
+        // this.email = document.getElementById('youremail');
+        //this.breed = document.getElementById('breed');
+        //this.comment = document.getElementById('comment');
+        //}
+        // }
+        //console.log(Cat);
+        //}
+        //  constructor(catName, ownerName, telephon, email, breed, comment) {
+        //        this.catName = catName;
+        //      this.ownerName = ownerName;
+        //    this.telephon = telephon;
+        //  this.email = email;
+        //this.breed = breed;
+        //this.comment = comment;
+
+        // catName = document.getElementById('catname').value;
+        class Cat {
+            constructor(catName, ownerName, telephon, email, breed, comment) {
+                this.catName = catName;
+                this.ownerName = ownerName;
+                this.telephon = telephon;
+                this.email = email;
+                this.breed = breed;
+                this.comment = comment;
+            }
+        }
+        document.querySelector('#btn').addEventListener("click", () => {
+            let catName = document.getElementById('catname').value;
+            let ownerName = document.getElementById('yourname').value;
+            let telephon = document.getElementById('yourtelephon').value;
+            let email = document.getElementById('youremail'.value);
+            let breed = document.getElementById('breed').value;
+            let comment = document.getElementById('comment').value;
+
+            let newInf = new Cat(catName, ownerName, telephon, email, breed, comment);
+            console.log(email);
+            console.log(newInf);
+        })
+        // function getInf() {
+
+        //   }
+        // let catName = document.getElementById("catName").value;
+
+
+        // let newInf = new Cat(catName, );
+
+
+        //  let newInf = new Cat(catName, );
+
+
+        // let myCat = new Cat('Снежок', '3', 5);
+        //myCat.catName = myCat.weight + 1; //котик поправился на 1 килограмм
+        //  console.log(newInf); //6
+    </script>
+</body>
+
+</html>
