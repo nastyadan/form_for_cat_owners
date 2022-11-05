@@ -16,30 +16,30 @@
 </head>
 
 <body>
-    <form>
+    <form id="formElem">
         <div>
             <label for="catname">Как зовут вашего питомца? <span class="red">*</span></label> <br />
-            <input type="text" id="catname" required />
+            <input type="text" id="catname" name="cat_name" required />
         </div><br />
         <div>
             <fieldset>
                 <legend>Ваши данные</legend>
                 <div><label for="yourname">Ваше имя? <span class="red">*</span></label>
-                    <input type="text" id="yourname" required /></div>
+                    <input type="text" id="yourname" name="user_name" required /></div>
                 <div>
                     <label for="yourtelephon">Введите ваш номер телефона:<span class="red">*</span></label>
-                    <input type="number" id="yourtelephon" required />
+                    <input type="number" id="yourtelephon" name="user_telephon" required />
                 </div>
                 <div>
                     <label for="youremail">Введите вашу почту:<span class="red">*</span></label>
-                    <input type="email" id="youremail" required />
+                    <input type="email" id="youremail" name="user_email" required />
                 </div>
 
 
             </fieldset>
         </div>
         <div> Какая порода у вашего котика?<span class="red">*</span>
-            <select id="breed" required>
+            <select id="breed" name="breed" required>
                 <option value="" selected>Выбрать</option>
                 <option value="Мейн-кун">Мейн-кун</option>
                 <option value="Манчкин">Манчкин</option>
@@ -58,8 +58,8 @@
         <div>
             <label> Пол вашего питомца:
                 <div>
-                    <p><input type="radio" name="sex" value="f" required /> Девочка </p>
-                    <p><input type="radio" name="sex" value="m" /> Мальчик</p>
+                    <p><input type="radio" name="gender" value="f" required /> Девочка </p>
+                    <p><input type="radio" name="gender" value="m" /> Мальчик</p>
                 </div>
 
 
@@ -68,10 +68,10 @@
 
         <div> Ваш комментарий:
             <label for="comment"></label>
-            <p><textarea cols="30" id="comment"></textarea></p>
+            <p><textarea cols="30" id="comment" name="comment"></textarea></p>
         </div>
         <div> Поделитесь фотографией вашего котика <br />
-            <p> <input type="file" multiple /></p>
+            <p> <input type="file" name="file" multiple /></p>
         </div>
 
 
@@ -99,6 +99,17 @@
             let newInf = new Cat(catName, ownerName, telephon, email, breed, comment);
             // console.log(email);
             console.log(newInf);
+
+            fetch("https://httpbin.org/post", {
+                    method: 'POST',
+                    body: new FormData(formElem)
+                })
+                .then(response => response.json())
+                .then(user => {
+                    console.log(user);
+                })
+                .catch(error => console.log(error));
+
         })
     </script>
 </body>
